@@ -8,7 +8,6 @@ import numpy as np
 
 def checkArray(alist, minVal ,maxVal):
     if((minVal*2) <= alist.size <= (maxVal*2)):
-        print sum(sum(alist))
         return (0 <= sum(sum(alist)) <= maxVal - minVal)
     else: 
         return False
