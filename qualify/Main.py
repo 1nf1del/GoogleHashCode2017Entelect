@@ -16,7 +16,7 @@ videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 
 def sorter(r):
-    vids = len([v for v in requests if v[0] == r[0]])
+    vids = sum([v[2] for v in requests if v[0] == r[0]])
     return vids
 
 requests = sorted(requests, key=sorter, reverse=True)
