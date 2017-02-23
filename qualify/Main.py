@@ -14,7 +14,10 @@ import Scoring as Sc
 test_in = "kittens.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
-requests = sorted(requests, key=lambda r: r[2] * endpoints[r[1]][0], reverse=True)
+def sorter(r):
+    return r[2] * endpoints[r[1]][0]
+
+requests = sorted(requests, key=sorter, reverse=True)
 
 
 def getMaxCapacity(l):
