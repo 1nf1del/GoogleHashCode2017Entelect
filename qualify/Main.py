@@ -22,7 +22,7 @@ def getMaxCapacity(caches):
 
 
 while True:
-    if requests.size <= 0:
+    if len(requests) <= 0:
         break # Storage space left
     req = requests.pop(0)
     videoId = req[0]
@@ -30,8 +30,7 @@ while True:
 
     endpId = req[1]
     endp = endpoints[endpId]
-    serverList = endp[1]
-    serverLatencies = sorted(serverList, key=itemgetter(1))
+    serverLatencies = sorted(endp[1], key=itemgetter(1)) # cacheId, cacheLatency
     serverDetails = [caches[s[0]] for s in serverLatencies]
 
     if videoSize > getMaxCapacity(serverDetails):
@@ -45,8 +44,17 @@ while True:
     if found:
         continue
 
-    placed = False
     for s in serverLatencies:
+        sid = s[0]
+        cacheObj = caches[sid]
+        if cacheObj[0] > videoSize:
+            cacheObj[0] -= videoSizes
+            cacheObj[1].append(videoId)
+            break
+
+
+
+
 
 
 
