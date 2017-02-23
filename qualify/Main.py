@@ -10,15 +10,17 @@ from operator import itemgetter
 
 import numpy as np
 
-test_in = "kittens.in"
+test_in = "test.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 requests = sorted(requests, key=itemgetter(2), reverse=True)
 
-caches = [(100, [])]*cachesCount
+def getMaxCapacity(l):
+    return max(zip(*l)[0])
 
-def getMaxCapacity(caches):
-    return max(zip(*caches)[0])
+caches = [[100, []]]*cachesCount
+
+
 
 
 while True:
@@ -31,6 +33,8 @@ while True:
     endpId = req[1]
     endp = endpoints[endpId]
     serverLatencies = sorted(endp[1], key=itemgetter(1)) # cacheId, cacheLatency
+    if len(serverLatencies) == 0:
+        continue
     serverDetails = [caches[s[0]] for s in serverLatencies]
 
     if videoSize > getMaxCapacity(serverDetails):
@@ -38,7 +42,7 @@ while True:
 
     found = False
     for s in serverLatencies:
-        if videoId in caches[s][1]:
+        if videoId in caches[s[0]][1]:
             found = True
             break
     if found:
@@ -48,7 +52,7 @@ while True:
         sid = s[0]
         cacheObj = caches[sid]
         if cacheObj[0] > videoSize:
-            cacheObj[0] -= videoSizes
+            cacheObj[0] = cacheObj[0] - videoSize
             cacheObj[1].append(videoId)
             break
 
