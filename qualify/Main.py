@@ -7,11 +7,12 @@ Created on Mon Feb 20 19:25:07 2017
 import Validation as V
 import IO as IO
 from operator import itemgetter
+import random
 
 import numpy as np
 import Scoring as Sc
 
-test_in = "kittens.in"
+test_in = "trending_today.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 def sorter(r):
@@ -54,7 +55,10 @@ while True:
     if found:
         continue
 
-    for s in serverLatencies:
+    ids = random.shuffle(range(0, len(serverLatencies)))
+
+    for i in ids:
+        s = serverLatencies[i]
         sid = s[0]
         cacheObj = caches[sid]
         if cacheObj[0] > videoSize:
