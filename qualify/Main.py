@@ -10,7 +10,7 @@ from operator import itemgetter
 
 import numpy as np
 
-test_in = "test.in"
+test_in = "kittens.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 requests = sorted(requests, key=itemgetter(2), reverse=True)
