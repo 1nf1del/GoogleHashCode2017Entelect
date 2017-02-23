@@ -19,7 +19,7 @@ def ReadFile(fileName):
     for e in xrange(endpointCount):
         latency, connected = np.array(f.readline().split(' '), dtype=int)
         endpoints[e, 0] = latency
-        tempArray = np.zeros((2, connected), dtype=int)
+        tempArray = np.zeros((connected, 2 ), dtype=int)
         for c in xrange(connected):
             cacheID, cacheLatency = np.array(f.readline().split(' '), dtype=int)
             tempArray[c, 0] = cacheID
