@@ -6,8 +6,8 @@ Created on Mon Feb 20 17:23:05 2017
 
 import numpy as np
 
-def ReadFile(fileName):
 
+def ReadFile(fileName):
     f = open(fileName, 'r')
 
     line = np.array(f.readline().split(' '), dtype=int)
@@ -21,10 +21,10 @@ def ReadFile(fileName):
         for c in xrange(connected):
             np.array(f.readline().split(' '), dtype=int)
 
-
-
-    requests = [
-        np.array(f.readline().split(' '), dtype=int) for r in xrange(requestCount)
+    requests = [ # video, endpoint, count
+        np.array(f.readline().split(' '), dtype=int).tolist() for r in xrange(requestCount)
     ]
+
+    requests = requests[requests[:,2].argsort()]
 
     return videoSizes, endpoints, requests, cachesCount, capacity
