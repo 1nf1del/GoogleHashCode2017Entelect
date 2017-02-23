@@ -7,4 +7,5 @@ Created on Mon Feb 20 19:25:07 2017
 import Validation as V
 import IO as IO
 
-videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile("test.in")
+test_in = "kittens.in"
+videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)

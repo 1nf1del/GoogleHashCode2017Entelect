@@ -17,13 +17,15 @@ def ReadFile(fileName):
 
     endpoints = []
     for e in xrange(endpointCount):
-        latency, connected = np.array(f.readline().split(' '), dtype=int)
+        array = np.array(f.readline().split(' '), dtype=int)
+        latency, connected = array
         for c in xrange(connected):
-            pass
+            np.array(f.readline().split(' '), dtype=int)
 
     requests = []
     for r in xrange(requestCount):
-        count, video, endpoint = np.array(f.readline().split(' '), dtype=int)
+        arr = np.array(f.readline().split(' '), dtype=int)
+        count, video, endpoint = arr
         pass
 
 
