@@ -9,3 +9,5 @@ import IO as IO
 
 test_in = "kittens.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
+
+print "Done"
