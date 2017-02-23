@@ -13,7 +13,7 @@ import numpy as np
 test_in = "test.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
-requests = sorted(requests, cmp=lambda req : req[2] * endpoints[req[1]][0], reverse=True)
+requests = sorted(requests, key=lambda req : req[2] * endpoints[req[1]][0], reverse=True)
 
 def getMaxCapacity(l):
     return max(zip(*l)[0])
