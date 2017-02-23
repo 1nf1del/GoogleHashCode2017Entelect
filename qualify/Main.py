@@ -18,7 +18,7 @@ requests = sorted(requests, key=itemgetter(2), reverse=True)
 def getMaxCapacity(l):
     return max(zip(*l)[0])
 
-caches = [[100, []]]*cachesCount
+caches = [[100, []] for _ in xrange(cachesCount)]
 
 
 
@@ -55,6 +55,9 @@ while True:
             cacheObj[0] = cacheObj[0] - videoSize
             cacheObj[1].append(videoId)
             break
+
+
+print caches
 
 
 
