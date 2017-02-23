@@ -14,12 +14,11 @@ import Scoring as Sc
 test_in = "kittens.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
+
 def sorter(r):
-    count = r[2]
-    endp = endpoints[r[1]]
-    ld = endp[0]
-    serverLatencies = sorted(endp[1], key=itemgetter(1))
-    return count * (ld - serverLatencies[0][1])
+    vids = sum([v[2] for v in requests if v[0] == r[0]])
+    return vids
+
 requests = sorted(requests, key=sorter, reverse=True)
 
 
