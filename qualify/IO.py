@@ -11,17 +11,21 @@ def ReadFile(fileName):
     f = open(fileName, 'r')
 
     line = np.array(f.readline().split(' '), dtype=int)
-    videos, endpoints, requests, caches, capacity = line
+    videoCount, endpointCount, requestCount, cachesCount, capacity = line
     
     videoSizes = np.array(f.readline().split(' '), dtype=int)
 
-    for e in xrange(endpoints):
+    endpoints = []
+    for e in xrange(endpointCount):
         latency, connected = np.array(f.readline().split(' '), dtype=int)
         for c in xrange(connected):
             pass
 
-    for r in xrange(requests):
+    requests = []
+    for r in xrange(requestCount):
         count, video, endpoint = np.array(f.readline().split(' '), dtype=int)
         pass
+
+
     
-    return array, ingredientMin, ingredientMax
+    return videoSizes, endpoints, requests, cachesCount, capacity
