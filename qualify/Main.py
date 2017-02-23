@@ -15,7 +15,7 @@ videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 requests = sorted(requests, key=itemgetter(2), reverse=True)
 
-caches = [[100, []]]*cachesCount
+caches = [(100, [])]*cachesCount
 
 def getMaxCapacity(caches):
     return max(zip(*caches)[0])
