@@ -10,4 +10,9 @@ import IO as IO
 test_in = "test.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
+from operator import itemgetter
+print requests
+requests = sorted(requests,key=itemgetter(2), reverse=true)
+print requests
+
 print "Done"
