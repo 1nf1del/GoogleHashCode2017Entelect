@@ -24,6 +24,6 @@ def ReadFile(fileName):
     requests =  [# video, endpoint, count
         np.array(f.readline().split(' '), dtype=int) for _ in xrange(requestCount)
     ]
-    
+
 
     return videoSizes, endpoints, requests, cachesCount, capacity
