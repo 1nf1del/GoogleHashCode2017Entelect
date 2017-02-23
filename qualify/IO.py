@@ -19,13 +19,13 @@ def ReadFile(fileName):
     for e in xrange(endpointCount):
         latency, connected = np.array(f.readline().split(' '), dtype=int)
         endpoints[0, e] = latency
-        tempArray = np.zeros((2, connected))
+        tempArray = np.zeros((2, connected), dtype=int)
         for c in xrange(connected):
             cacheID, cacheLatency = np.array(f.readline().split(' '), dtype=int)
             tempArray[0, c] = cacheID
             tempArray[1, c] = cacheLatency
 
-        endpoints[1, e] = np.array(tempArray)
+        endpoints[1, e] = tempArray
 
 
     requests =  [# video, endpoint, count
