@@ -26,14 +26,10 @@ def ReadFile(fileName):
             tempArray[1, c] = cacheLatency
 
         endpoints[1, e] = np.array(tempArray)
-        #tempArray
-        print endpoints
 
 
-    requests = [ # video, endpoint, count
-        np.array(f.readline().split(' '), dtype=int).tolist() for r in xrange(requestCount)
+    requests =  [# video, endpoint, count
+        np.array(f.readline().split(' '), dtype=int) for _ in xrange(requestCount)
     ]
-
-    #requests = requests[requests[:,2].argsort()]
 
     return videoSizes, endpoints, requests, cachesCount, capacity
