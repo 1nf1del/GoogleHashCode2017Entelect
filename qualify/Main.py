@@ -57,6 +57,5 @@ while True:
             break
 
 Sc.output(caches)
-print caches
 
 print "Done"
