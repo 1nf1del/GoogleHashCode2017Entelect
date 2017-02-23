@@ -15,8 +15,11 @@ test_in = "kittens.in"
 videoSizes, endpoints, requests, cachesCount, capacity = IO.ReadFile(test_in)
 
 def sorter(r):
-    return r[2] * endpoints[r[1]][0]
-
+    count = r[2]
+    endp = endpoints[r[1]]
+    ld = endp[0]
+    serverLatencies = sorted(endp[1], key=itemgetter(1))
+    return count * (ld - serverLatencies[0][1])
 requests = sorted(requests, key=sorter, reverse=True)
 
 
